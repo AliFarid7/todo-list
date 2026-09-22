@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="dashboard">
+            <button class="inbox-button">
+                <img src="./imgs/inbox.svg" alt="Inbox Icon">
+                <span>Inbox</span>
+            </button>
+            <h2>My Projects</h2>
+        </div>
+
+        <div class="main-content">
+            <button id="add-new-todo">+ Add Todo Note</button>
+            <dialog id="todoDialog">
+                <form id="todoForm">
+                    <h2>New Todo</h2>
+
+                    <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date:</label>
+                        <input type="date" id="dueDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority:</label>
+                        <select id="priority">
+                            <option value="High">High</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="saveTodoBtn">Save Task</button>
+                        <button type="button" id="closeDialogBtn">Cancel</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <div class="todoDisplay"></div>
+        </div>
+    </div>
+</body>
+
+</html>
