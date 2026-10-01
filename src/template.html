@@ -15,10 +15,39 @@
                 <span>Inbox</span>
             </button>
             <h2>My Projects</h2>
+            <div id="projectsList"></div>
+            <button id="openProjectModalBtn" class="add-project-btn">+ Add Project</button>
         </div>
 
+        <dialog id="projectDialog">
+            <form id="projectForm">
+                <h2>New Project</h2>
+
+                <div class="form-group">
+                    <label for="projectName">Project Name:</label>
+                    <input type="text" id="projectName" required">
+                </div>
+
+                <div class="form-group">
+                    <label for="projectColor">Tag Color:</label>
+                    <select id="projectColor">
+                        <option value="#3b82f6">🔵 Blue</option>
+                        <option value="#ef4444">🔴 Red</option>
+                        <option value="#10b981">🟢 Green</option>
+                        <option value="#f59e0b">🟡 Yellow</option>
+                        <option value="#8b5cf6">🟣 Purple</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit">Add Project</button>
+                    <button type="button" id="closeProjectModalBtn">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
         <div class="main-content">
-            <button id="add-new-todo">+ Add Todo Note</button>
+            <button id="add-new-todo">+ Add Task</button>
             <dialog id="todoDialog">
                 <form id="todoForm">
                     <h2>New Todo</h2>
@@ -29,13 +58,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description:</label>
+                        <label for="description">Description(Optional):</label>
                         <textarea id="description"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="dueDate">Due Date:</label>
-                        <input type="date" id="dueDate" required>
+                        <input type="date" id="dueDate" max="2099-12-31">
                     </div>
 
                     <div class="form-group">
@@ -44,6 +73,12 @@
                             <option value="High">High</option>
                             <option value="Medium" selected>Medium</option>
                             <option value="Low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <label for="projectSelect">Project:</label>
+                        <select id="projectSelect" name="projectSelect">
                         </select>
                     </div>
 

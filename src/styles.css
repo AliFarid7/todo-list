@@ -79,8 +79,8 @@ body {
 .todoDisplay {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 
@@ -157,19 +157,42 @@ dialog::backdrop {
     color: #2d2d44;
 }
 
-.inbox-button {
+.inbox-button,
+.project-item-btn {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 25px;
     padding: 8px 16px;
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #2d2d44;
 }
 
 .inbox-button img {
     width: 20px;
     height: 20px;
+}
+
+.delete-btn,
+.add-project-btn {
+    /* padding: 10px 20px; */
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    align-self: center;
+}
+
+.delete-btn {
+    background-color: blanchedalmond;
+}
+
+.add-project-btn {
+    background-color: #2d2d44;
+    color: blanchedalmond;
 }
