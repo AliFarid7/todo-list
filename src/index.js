@@ -60,7 +60,7 @@ projectForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const name = document.querySelector("#projectName").value;
-    const color = document.querySelector("#projectColor").value;
+    const color = document.querySelector('input[name="projectColor"]:checked').value;
 
     const newProject = new Project(name, color);
     projects.push(newProject);
@@ -69,7 +69,7 @@ projectForm.addEventListener("submit", (e) => {
         currentProject = selectedProject;
         renderProjectTasks(currentProject);
     });
-    
+
     projectForm.reset();
     projectDialog.close();
 });

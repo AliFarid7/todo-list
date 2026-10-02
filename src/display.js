@@ -5,7 +5,7 @@ export function fillDisplay(todoObject, currentProject) {
     const card = document.createElement("div");
     card.classList.add("todo-card");
     card.dataset.id = todoObject.id;
-
+    
     const title = document.createElement("h3");
     title.textContent = todoObject.title;
 

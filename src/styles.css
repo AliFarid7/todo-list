@@ -68,6 +68,28 @@ body {
 
 }
 
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #3b3b58;
+    color: blanchedalmond;
+    border: 1px solid #52527a;
+    border-radius: 6px;
+    outline: none;
+    margin-top: 4px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    border-color: blanchedalmond;
+    box-shadow: 0 0 0 2px rgba(255, 235, 205, 0.2);
+}
+
 #container {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -195,4 +217,57 @@ dialog::backdrop {
 .add-project-btn {
     background-color: #2d2d44;
     color: blanchedalmond;
+}
+
+/* Styling from creating new project */
+
+.color-options-container {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.color-option {
+    cursor: pointer;
+    position: relative;
+}
+
+.color-option input[type="radio"] {
+    display: none;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.color-option:hover .color-swatch {
+    transform: scale(1.15);
+}
+
+.color-option input[type="radio"]:checked+.color-swatch {
+    outline: 2px solid blanchedalmond;
+    outline-offset: 2px;
+}
+
+#saveTodoBtn,
+#closeDialogBtn,
+#addProjectModalButton,
+#closeProjectModalBtn {
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    align-self: center;
+    background-color: blanchedalmond;
+    color: #2d2d44;
+    margin-top: 15px;
 }
