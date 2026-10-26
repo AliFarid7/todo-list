@@ -31,7 +31,7 @@ closeDialogBtn.addEventListener("click", () => {
 if (inboxBtn) {
     inboxBtn.addEventListener("click", () => {
         currentProject = projects[0];
-        renderProjectTasks(currentProject, openEditModal);
+        renderProjectTasks(currentProject, openEditModal, deleteTodo);
     });
 }
 
@@ -73,7 +73,7 @@ todoForm.addEventListener("submit", (e) => {
         if (!sourceProject) sourceProject = currentProject;
 
         const todoUpdate = sourceProject.todos.find(todo => todo.id === editingTodoId);
-        
+
         if (todoUpdate) {
             todoUpdate.title = title;
             todoUpdate.description = description;
@@ -92,7 +92,7 @@ todoForm.addEventListener("submit", (e) => {
     }
 
     saveProjects(projects);
-    renderProjectTasks(currentProject, openEditModal);
+    renderProjectTasks(currentProject, openEditModal, deleteTodo);
 
     resetTodoModal();
     dialog.close();
@@ -111,7 +111,7 @@ projectForm.addEventListener("submit", (e) => {
 
     renderSidebarProjects(projects, (selectedProject) => {
         currentProject = selectedProject;
-        renderProjectTasks(currentProject, openEditModal);
+        renderProjectTasks(currentProject, openEditModal, deleteTodo);
     });
 
     projectForm.reset();
@@ -130,8 +130,13 @@ function openEditModal(todo) {
 
     const ownerProject = projects.find(proj => proj.todos.some(t => t.id === todo.id)) || currentProject;
     updateProjectDropdown(ownerProject);
-    
+
     dialog.showModal();
+}
+
+function deleteTodo(todo) {
+    currentProject.deleteTodo(todo.id);
+    saveProjects(projects);
 }
 
 function resetTodoModal() {
@@ -143,6 +148,6 @@ function resetTodoModal() {
 
 renderSidebarProjects(projects, (selectedProject) => {
     currentProject = selectedProject;
-    renderProjectTasks(currentProject, openEditModal);
+    renderProjectTasks(currentProject, openEditModal, deleteTodo);
 });
-renderProjectTasks(currentProject, openEditModal);
+renderProjectTasks(currentProject, openEditModal, deleteTodo);

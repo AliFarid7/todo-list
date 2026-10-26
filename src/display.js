@@ -1,6 +1,6 @@
 import { format, formatDistanceToNow, parseISO } from "date-fns";
 
-export function fillDisplay(todoObject, currentProject, onEdit) {
+export function fillDisplay(todoObject, onEdit, onDelete) {
     const todoDisplay = document.querySelector(".todoDisplay");
     const card = document.createElement("div");
     card.classList.add("todo-card");
@@ -53,9 +53,7 @@ export function fillDisplay(todoObject, currentProject, onEdit) {
     deleteButton.textContent = "Delete Note";
     deleteButton.addEventListener("click", (e) => {
         e.stopPropagation();
-        if (currentProject) {
-            currentProject.deleteTodo(todoObject.id);
-        }
+        onDelete(todoObject);
         card.remove();
     });
 
@@ -103,11 +101,11 @@ export function renderSidebarProjects(projectsArray, onProjectClick) {
     });
 }
 
-export function renderProjectTasks(project, onEdit) {
+export function renderProjectTasks(project, onEdit, onDelete) {
     const todoDisplay = document.querySelector(".todoDisplay");
     todoDisplay.innerHTML = "";
 
     project.todos.forEach((todoNote) => {
-        fillDisplay(todoNote, project, onEdit);
+        fillDisplay(todoNote, onEdit, onDelete);
     });
 }
