@@ -1,3 +1,4 @@
+/* --- CSS RESET & BASE STYLES --- */
 *,
 *::before,
 *::after {
@@ -65,9 +66,10 @@ body {
     color: blanchedalmond;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-
 }
 
+
+/* --- FORM INPUTS --- */
 input[type="text"],
 input[type="date"],
 textarea,
@@ -90,40 +92,88 @@ select:focus {
     box-shadow: 0 0 0 2px rgba(255, 235, 205, 0.2);
 }
 
+
+/* --- LAYOUT & CONTAINER --- */
 #container {
     display: grid;
     grid-template-columns: 250px 1fr;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     min-height: 100vh;
 }
-
-.todoDisplay {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 300px;
-}
-
 
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* padding: 20px; */
-    /* gap: 20px; */
+    justify-content: flex-start;
+    padding: 40px 20px;
+    width: 100%;
 }
 
+.todoDisplay {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 12px;
+}
+
+
+/* --- TODO CARDS --- */
 .todo-card {
     background-color: #3b3b58;
-    padding: 12px;
+    padding: 16px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: grid;
-    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border-left: 6px solid #6b7280;
+    width: 100%;
+}
+
+.todo-header-row {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 2px;
+}
+
+.todo-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: blanchedalmond;
+}
+
+.todo-due-date {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.todo-details {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #52527a;
+}
+
+.todo-card.expanded .todo-details {
+    display: block;
+}
+
+.todo-card.priority-high {
+    border-left-color: #ef4444;
+}
+
+.todo-card.priority-medium {
+    border-left-color: #f59e0b;
+}
+
+.todo-card.priority-low {
+    border-left-color: #10b981;
+}
+
+.priority-badge {
+    margin: 8px 0;
 }
 
 .priority-badge.high {
@@ -141,6 +191,13 @@ select:focus {
     font-weight: bold;
 }
 
+.todo-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* --- DIALOG MODALS --- */
 dialog {
     border: none;
     border-radius: 12px;
@@ -164,10 +221,18 @@ dialog::backdrop {
     font-weight: bold;
     margin-bottom: 20px;
     align-self: center;
+    color: #2d2d44;
 }
 
-/* Dashboard Styling */
+.optional-text {
+    font-size: 0.85rem;
+    font-weight: normal;
+    color: rgba(255, 235, 205, 0.6);
+    margin-left: 4px;
+}
 
+
+/* --- DASHBOARD & SIDEBAR --- */
 .dashboard {
     background-color: blanchedalmond;
     padding: 20px;
@@ -179,11 +244,11 @@ dialog::backdrop {
     color: #2d2d44;
 }
 
-.inbox-button,
+.inboxBtn,
 .project-item-btn {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
     padding: 8px 16px;
     background: transparent;
     border: none;
@@ -192,14 +257,12 @@ dialog::backdrop {
     color: #2d2d44;
 }
 
-.inbox-button img {
+.inboxBtn img {
     width: 20px;
     height: 20px;
 }
 
-.delete-btn,
 .add-project-btn {
-    /* padding: 10px 20px; */
     font-size: 1.2rem;
     cursor: pointer;
     border: none;
@@ -208,19 +271,25 @@ dialog::backdrop {
     margin-bottom: 20px;
     margin-top: 15px;
     align-self: center;
-}
-
-.delete-btn {
-    background-color: blanchedalmond;
-}
-
-.add-project-btn {
+    padding: 8px 16px;
     background-color: #2d2d44;
     color: blanchedalmond;
 }
 
-/* Styling from creating new project */
+.delete-btn,
+.edit-btn {
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: blanchedalmond;
+    color: #2d2d44;
+}
 
+
+/* --- PROJECT COLOR PICKER --- */
 .color-options-container {
     display: flex;
     flex-direction: row;
@@ -250,11 +319,13 @@ dialog::backdrop {
     transform: scale(1.15);
 }
 
-.color-option input[type="radio"]:checked+.color-swatch {
+.color-option input[type="radio"]:checked + .color-swatch {
     outline: 2px solid blanchedalmond;
     outline-offset: 2px;
 }
 
+
+/* --- GENERAL BUTTONS --- */
 #saveTodoBtn,
 #closeDialogBtn,
 #addProjectModalButton,
@@ -269,5 +340,5 @@ dialog::backdrop {
     align-self: center;
     background-color: blanchedalmond;
     color: #2d2d44;
-    margin-top: 15px;
+    padding: 8px 16px;
 }
