@@ -4,8 +4,9 @@ export default class TodoNote {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.id = crypto.randomUUID();
-        this.notes = notes;
+        this.id = (window.crypto && window.crypto.randomUUID)
+            ? window.crypto.randomUUID()
+            : Date.now().toString(36) + Math.random().toString(36.2); this.notes = notes;
         this.checklist = checklist;
     }
 }
